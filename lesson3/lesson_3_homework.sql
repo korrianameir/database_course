@@ -12,12 +12,12 @@ DROP TABLE IF EXISTS goods ;
 CREATE TABLE goods (
 	id SERIAL,
 	name varchar(255) DEFAULT NULL,
-	price BIGINT UNSIGNED NOT NULL
-	market_id BIGINT UNSIGNED NOT NULL
+	price BIGINT UNSIGNED NOT NULL,
+	market_id BIGINT UNSIGNED NOT NULL,
     user_id BIGINT UNSIGNED DEFAULT NULL,
 
     INDEX goods_name_idx(name), 
-	foreign key (user_id) references users(id)
+	foreign key (user_id) references users(id),
 	FOREIGN KEY (market_id) REFERENCES markets(id)
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE markets_goods(
 	good_id BIGINT UNSIGNED NOT NULL,
   
 	PRIMARY KEY (good_id, market_id,), 
-    FOREIGN KEY (market_id) REFERENCES markets(id)
+    FOREIGN KEY (market_id) REFERENCES markets(id),
     FOREIGN KEY (good_id) REFERENCES goods(id)
 );
 
